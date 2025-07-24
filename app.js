@@ -11,8 +11,6 @@ app.use('/auth', authRoutes);
 
 sequelize.sync().then(() => console.log('DB synced'));
 
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
-
 const uploadRoutes = require('./src/api/upload.routes');
 const path = require('path');
 
