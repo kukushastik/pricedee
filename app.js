@@ -1,22 +1,21 @@
 require('dotenv').config();
 const express = require('express');
-//const { sequelize } = require('./src/models');
-const authRoutes = require('./src/api/auth.routes');
-const uploadRoutes = require('./src/api/upload.routes');
+const app = express();
 const path = require('path');
 
-const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-app.use('/auth', authRoutes);
-app.use('/upload', uploadRoutes);
-app.use('/admin', express.static(path.join(__dirname, 'src/views')));
+// Временно убрали роуты с БД
+// const authRoutes = require('./src/api/auth.routes');
+// const uploadRoutes = require('./src/api/upload.routes');
+// app.use('/auth', authRoutes);
+// app.use('/upload', uploadRoutes);
 
-//sequelize.sync().then(() => console.log('DB synced'));
+// app.use('/admin', express.static(path.join(__dirname, 'src/views')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.send('Server is working!');
 });
 
 const PORT = process.env.PORT || 3000;
