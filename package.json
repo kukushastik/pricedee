@@ -4,8 +4,9 @@
   "description": "PriceDee Full Project",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
-  },
+    "start": "node app.js",
+    "dev": "node app.js"
+},
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
