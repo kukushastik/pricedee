@@ -1,3 +1,4 @@
+console.log('Starting');
 require('dotenv').config();
 console.log(env.PORT);
 const express = require('express');
