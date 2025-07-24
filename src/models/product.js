@@ -1,13 +1,10 @@
-module.exports = (sequelize, DataTypes) => {
-    const Product = sequelize.define('Product', {
-        name: DataTypes.STRING,
-        price: DataTypes.FLOAT,
-        sku: DataTypes.STRING
-    });
+const { DataTypes } = require('sequelize');
 
-    Product.associate = (models) => {
-        Product.belongsTo(models.PriceList, { foreignKey: 'priceListId' });
-    };
-
-    return Product;
+module.exports = (sequelize) => {
+  return sequelize.define('Product', {
+    name: DataTypes.STRING,
+    model: DataTypes.STRING,
+    price: DataTypes.FLOAT,
+    article: DataTypes.STRING
+  });
 };

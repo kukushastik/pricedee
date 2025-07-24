@@ -1,10 +1,16 @@
 const express = require('express');
-const router = express.Router();
 const multer = require('multer');
-const uploadController = require('../controllers/upload.controller');
-const auth = require('../middlewares/auth');
+const path = require('path');
+const { parseExcel } = require('../services/parser');
+const { Product } = require('../models');
 
+const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
-router.post('/upload', auth, upload.single('file'), uploadController.handleUpload);
+
+router.post('/', upload.single('file'), async (req, res) => {
+  const products = await parseExcel(req.file.path);
+  await Product.bulkCreate(products);
+  res.json({ success: true, count: products.length });
+});
 
 module.exports = router;
