@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const { sequelize } = require('./src/models');
+//const { sequelize } = require('./src/models');
 const authRoutes = require('./src/api/auth.routes');
 const uploadRoutes = require('./src/api/upload.routes');
 const path = require('path');
@@ -13,7 +13,7 @@ app.use('/auth', authRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/admin', express.static(path.join(__dirname, 'src/views')));
 
-sequelize.sync().then(() => console.log('DB synced'));
+//sequelize.sync().then(() => console.log('DB synced'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
